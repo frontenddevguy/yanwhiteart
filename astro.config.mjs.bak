@@ -1,0 +1,19 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import { imagetools } from 'vite-imagetools';
+
+{
+    site: 'https://yanwhite.art'
+  }
+
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '@bootstrap': '/node_modules/bootstrap/scss',
+        '@fonts': '/src/assets/fonts',
+      },
+    },
+    plugins: [imagetools()]   // Vite plugins go inside vite block
+  }
+});

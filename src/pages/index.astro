@@ -1,16 +1,50 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const { pathname } = Astro.url;
+import artworks from '../assets/images/artworks.json';
 
+const thumbImages = import.meta.glob(
+  '../assets/images/*.{jpg,png}',
+  { query: { w: 320, format: 'webp' }, import: 'default' }
+);
+
+const largeImages = import.meta.glob(
+  '../assets/images/*.{jpg,png}',
+  { query: { w: 1200, format: 'webp' }, import: 'default' }
+);
+
+// Resolve artwork image URLs
+const processedArtworks = await Promise.all(
+  artworks.map(async (work) => {
+    const thumbImport = thumbImages[`../assets/images/${work.filename}`];
+    const largeImport = largeImages[`../assets/images/${work.filename}`];
+
+    return {
+      ...work,
+      thumb: thumbImport ? await thumbImport() : '',
+      large: largeImport ? await largeImport() : ''
+    };
+  })
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout currentPath={pathname}>
+	<div class="container">
+		<div class="filters mb-4">
+			<button class="btn btn-secondary btn-light filter-button active" data-filter="painting">Painting</button>
+			<button class="btn btn-secondary btn-light filter-button" data-filter="print">Print</button>
+		</div>
+
+		<div class="row pt-5">
+			{processedArtworks.map(work => (
+			<div class={`artwork col-md-6 mb-5 mt-5  ${work.tags.join(' ')}`}>
+				<a href={work.large} class="artgallery" data-type="image">
+					<img src={work.thumb} alt={work.title} />
+				</a>
+				<p class="caption">{work.caption}</p>
+			</div>
+			))}
+		</div>
+	</div>
+</BaseLayout>
+

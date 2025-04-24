@@ -1,0 +1,93 @@
+---
+import "../assets/styles/main.scss";
+
+const links = [
+{ href: '/', label: 'Works' },
+{ href: '/about', label: 'About' },
+];
+
+const { currentPath = '' } = Astro.props;
+---
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Your Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+
+</head>
+
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-md mb-5">
+        <div class="container header">
+            <a class="navbar-brand" href="/">
+                <h1>Yan White</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-end">
+                    {links.map(link => (
+                    <li class="nav-item">
+                        <a class={`nav-link ${ (link.href==='/' && currentPath==='/' ) || (link.href !=='/' &&
+                            currentPath.startsWith(link.href)) ? 'active' : '' }`} href={link.href}>
+                            {link.label}
+                        </a>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <slot />
+
+    <script>
+        // Import Bootstrap's JavaScript directly within the script tag
+        import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+        import GLightbox from 'glightbox';
+        import 'glightbox/dist/css/glightbox.css';
+  
+  
+        // ==== Initialize GLightbox ====
+        const lightbox = GLightbox({
+          selector: '.artgallery',
+          touchNavigation: true,
+          loop: false,
+          zoomable: false,
+          width: 'auto',
+          height: 'auto',
+          closeButton: true,
+          skin: 'clean',
+        });
+  
+        document.querySelectorAll('.filter-button').forEach(button => {
+          button.addEventListener('click', () => {
+            document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+  
+            const filter = button.getAttribute('data-filter');
+            document.querySelectorAll('.artwork').forEach(item => {
+              if (filter === 'all' || item.classList.contains(filter)) {
+                item.style.display = '';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+  
+        // 👉 Trigger default filter
+        const defaultButton = document.querySelector('.filter-button.active');
+        if (defaultButton) {
+          defaultButton.click();
+        }
+      </script>
+</body>
+
+</html>

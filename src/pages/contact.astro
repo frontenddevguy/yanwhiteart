@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const { pathname } = Astro.url;
+---
+
+<BaseLayout currentPath={pathname}>
+	<div class="container">
+		foo
+	</div>
+</BaseLayout>
