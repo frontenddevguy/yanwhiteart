@@ -30,6 +30,12 @@
     "caption": ["'East West' - oil on canvas (2024)"]
   },
   {
+    "title": "10x is easier than 2x",
+    "filename": "10xiseasierthan2x.jpg",
+    "tags": ["painting", "2024"],
+    "caption": ["'10x is easier than 2x' - house paint, ink, acrylic on canvas, 96 x 96 x 2cm (2024)"]
+  },
+  {
     "title": "Miasma",
     "filename": "miasma.jpg",
     "tags": ["painting", "2024"],
@@ -54,10 +60,10 @@
     "caption": ["'Sc-Injt-Hy-2' - screenprint and inkjet on paper, 30x40cm (2025)"]
   },
   {
-    "title": "In-Sc-Ai-1",
-    "filename": "In-Sc-Ai-1.jpg",
-    "tags": ["print", "2024", "screenprint", "inkjet", "airbrush"],
-    "caption": ["'In-Sc-Ai-1' - screenprint, inkjet and airbrush on paper, 30x40cm (2025)"]
+    "title": "Sc-Sp-InJt-1",
+    "filename": "Sc-Sp-InJt-1.jpg",
+    "tags": ["print", "2024", "screenprint", "inkjet"],
+    "caption": ["'Sc-Sp-InJt-1' - screenprint, spraypaint and inkjet on paper, 30x40cm (2025)"]
   },
   {
     "title": "Sc-InJt-Hy-1",
@@ -66,16 +72,16 @@
     "caption": ["'Sc-InJt-Hy-1' - screenprint and inkjet on paper, 30x40cm (2025)"]
   },
   {
-    "title": "Sc-Sp-InJt-1",
-    "filename": "Sc-Sp-InJt-1.jpg",
-    "tags": ["print", "2024", "screenprint", "inkjet"],
-    "caption": ["'Sc-Sp-InJt-1' - screenprint, spraypaint and inkjet on paper, 30x40cm (2025)"]
-  },
-  {
     "title": "Int-IJ-1",
     "filename": "Int-IJ-1.jpg",
     "tags": ["print", "2024", "inkjet"],
     "caption": ["'Int-IJ-1' - inkjet on paper, 30x40cm (2025)"]
+  },
+  {
+    "title": "Int-1",
+    "filename": "Int-1.jpg",
+    "tags": ["print", "2025"],
+    "caption": ["'Int-1' - acrylic and spraypaint on paper, 30x40cm (2025)"]
   },
   {
     "title": "Sc-Rpt-1",
@@ -84,16 +90,22 @@
     "caption": ["'Sc-Rpt-1' - screenprint on paper, 30x40cm (2024)"]
   },
   {
+    "title": "Mn-Sc-1",
+    "filename": "Mn-Sc-1.jpg",
+    "tags": ["print", "2024", "screenprint"],
+    "caption": ["'Mn-Sc-1' - monoprint and screenprint on paper, 30x40cm (2024)"]
+  },
+  {
     "title": "Sc-Hy-1",
     "filename": "Sc-Hy-1.jpg",
     "tags": ["print", "2024", "screenprint"],
     "caption": ["'Sc-Hy-1' - screenprint on paper, 30x40cm (2024)"]
   },
   {
-    "title": "Mn-Sc-1",
-    "filename": "Mn-Sc-1.jpg",
+    "title": "Sc-Sp-Hy-1",
+    "filename": "Sc-Sp-Hy-1.jpg",
     "tags": ["print", "2024", "screenprint"],
-    "caption": ["'Mn-Sc-1' - monoprint and screenprint on paper, 30x40cm (2024)"]
+    "caption": ["'Sc-Sp-Hy-1' - screenprint and spraypaint on paper, 30x40cm (2024)"]
   },
   {
     "title": "Sc-Sp-St-1",
@@ -102,10 +114,10 @@
     "caption": ["'Sc-Sp-St-1' - screenprint and spraypaint on paper, 30x40cm (2024)"]
   },
   {
-    "title": "Sc-Sp-Hy-1",
-    "filename": "Sc-Sp-Hy-1.jpg",
+    "title": "Sc-Sp-St-2",
+    "filename": "Sc-Sp-St-2.jpg",
     "tags": ["print", "2024", "screenprint"],
-    "caption": ["'Sc-Sp-Hy-1' - screenprint and spraypaint on paper, 30x40cm (2024)"]
+    "caption": ["'Sc-Sp-St-2' - screenprint and spraypaint on paper, 30x40cm (2024)"]
   },
   {
     "title": "Sc-LD-1",
@@ -160,6 +172,24 @@
     "filename": "Mn-3.jpg",
     "tags": ["print", "2024", "monoprint"],
     "caption": ["'Mn-3' - monoprint on paper, 30x40cm (2024)"]
+  },
+  {
+    "title": "Sp-St-1-Kaede",
+    "filename": "Sp-St-1-Kaede.jpg",
+    "tags": ["print", "2024", "stencil"],
+    "caption": ["'Sp-St-1-Kaede' - spraypaint on paper, 30x40cm (2024)"]
+  },
+  {
+    "title": "Sp-St-2",
+    "filename": "Sp-St-2.jpg",
+    "tags": ["print", "2024", "stencil"],
+    "caption": ["'Sp-St-2' - spraypaint on paper, 30x40cm (2024)"]
+  },
+  {
+    "title": "OpSc-LtSp-1",
+    "filename": "OpSc-LtSp-1.jpg",
+    "tags": ["print", "2024", "screenprint"],
+    "caption": ["'OpSc-LtSp-1' - screen print on paper, 30x40cm (2024)"]
   },
   {
     "title": "PrPr-Int-1",
