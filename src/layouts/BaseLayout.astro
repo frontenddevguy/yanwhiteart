@@ -7,18 +7,45 @@ const links = [
 ];
 
 const { currentPath = '' } = Astro.props;
+
+import type { Props } from 'astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string[];
+  // Add other dynamic head elements as needed
+}
+
+const { title, description, image, keywords } = Astro.props as Props;
+const siteName = "Yan White Art";
+const canonicalURL = Astro.url.toString();
+const defaultImage = "/yan_temple-of-the-sun.webp";
+const pageImage = image ?? defaultImage;
+
 ---
 
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Your Portfolio</title>
+    <title>{title} | {siteName}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords.join(', ')} />}
+    <link rel="canonical" href={canonicalURL} />
+
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_GB" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-
 </head>
 
 <body>

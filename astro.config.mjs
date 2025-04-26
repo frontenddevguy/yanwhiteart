@@ -27,5 +27,6 @@ export default defineConfig({
     plugins: [imagetools()]
   },
 
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  site: 'https://yanwhite.art',
 });

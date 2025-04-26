@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Yan White Art";
+const pageDescription = "London-based artist working with dyes, paint, print and code";
+const pageImage = "/yan_temple-of-the-sun.webp";
+const pageKeywords = ["artist", "art", "london", "emerging", "dye", "painting"];
 const { pathname } = Astro.url;
 import artworks from '../assets/images/artworks.json';
 
@@ -28,7 +32,8 @@ const processedArtworks = await Promise.all(
 );
 ---
 
-<BaseLayout currentPath={pathname}>
+<BaseLayout currentPath={pathname} title={pageTitle} description={pageDescription} image={pageImage} keywords={pageKeywords}>
+
 	<div class="container">
 		<div class="filters mb-4">
 			<button class="btn btn-secondary btn-light filter-button active" data-filter="painting">Painting</button>
