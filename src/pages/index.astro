@@ -6,22 +6,37 @@ const pageImage = "/yan_temple-of-the-sun.webp";
 const pageKeywords = ["artist", "art", "london", "emerging", "dye", "painting"];
 const { pathname } = Astro.url;
 import artworks from '../assets/images/artworks.json';
+import hybrids from '../assets/images/hybrids.json';
+import monoprints from '../assets/images/monoprints.json';
+import photomash from '../assets/images/photomash.json';
+import echoes from '../assets/images/echoes.json';
+
+const portfolio = [...artworks, ...hybrids, ...monoprints, ...photomash, ...echoes];
 
 const thumbImages = import.meta.glob(
-  '../assets/images/*.{jpg,png}',
+  '../assets/images/**/*.{jpg,png}',
   { query: { w: 320, format: 'webp' }, import: 'default' }
 );
 
 const largeImages = import.meta.glob(
-  '../assets/images/*.{jpg,png}',
+  '../assets/images/**/*.{jpg,png}',
   { query: { w: 1200, format: 'webp' }, import: 'default' }
 );
 
-// Resolve artwork image URLs
+const normalizedThumbs = {};
+for (const [key, value] of Object.entries(thumbImages)) {
+  normalizedThumbs[key.replace('../assets/images/', '')] = value;
+}
+
+const normalizedLarge = {};
+for (const [key, value] of Object.entries(largeImages)) {
+  normalizedLarge[key.replace('../assets/images/', '')] = value;
+}
+
 const processedArtworks = await Promise.all(
-  artworks.map(async (work) => {
-    const thumbImport = thumbImages[`../assets/images/${work.filename}`];
-    const largeImport = largeImages[`../assets/images/${work.filename}`];
+  portfolio.map(async (work) => {
+    const thumbImport = normalizedThumbs[work.filename];
+    const largeImport = normalizedLarge[work.filename];
 
     return {
       ...work,
@@ -35,16 +50,31 @@ const processedArtworks = await Promise.all(
 <BaseLayout currentPath={pathname} title={pageTitle} description={pageDescription} image={pageImage} keywords={pageKeywords}>
 
 	<div class="container">
-		<div class="filters mb-4">
-			<button class="btn btn-secondary btn-light filter-button active" data-filter="painting">Painting</button>
-			<button class="btn btn-secondary btn-light filter-button" data-filter="print">Print</button>
+		<!-- Main Filters -->
+		<div class="filters mb-3">
+		<button class="btn btn-secondary btn-light filter-button active" data-filter="painting">Painting</button>
+		<button class="btn btn-secondary btn-light filter-button" data-filter="print">Prints</button>
+		<button class="btn btn-secondary btn-light filter-button" data-filter="photomash">Photomash</button>
+		</div>
+
+		<!-- Sub Filters -->
+		<div class="sub-filters mb-4 d-none">
+		<button class="btn btn-secondary btn-light btn-sm sub-filter-button active" data-filter="hybrid">Hybrids</button>
+		<button class="btn btn-secondary btn-light btn-sm sub-filter-button" data-filter="monoprint">Monoprints</button>
+		<button class="btn btn-secondary btn-light btn-sm sub-filter-button" data-filter="echoes">Echoes</button>
 		</div>
 
 		<div class="row pt-5">
 			{processedArtworks.map(work => (
-			<div class={`artwork col-md-6 mb-5 mt-5  ${work.tags.join(' ')}`}>
+			<div class={`artwork 
+				${work.tags.includes('photomash') ? 'col-lg-2 col-md-4 px-5' 
+					: work.tags.includes('echoes') ? 'col-lg-3 px-custom' 
+					: work.tags.includes('hybrid') ? 'col-lg-4 px-custom' 
+					: work.tags.includes('monoprint') ? 'col-lg-4 px-custom' 
+					: 'col-md-6'} 
+				mb-4 ${work.tags.join(' ')}`}>
 				<a href={work.large} class="artgallery" data-type="image">
-					<img src={work.thumb} alt={work.title} />
+					<img src={work.thumb} alt={work.title} class="img-fluid" />
 				</a>
 				<p class="caption">{work.caption}</p>
 			</div>

@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Mn-Sc-1",
+    "filename": "monoprints/Mn-Sc-1.jpg",
+    "tags": ["monoprint", "2024", "screenprint"],
+    "caption": ["'Mn-Sc-1' - monoprint and screenprint on paper, 42 x 59cm (2024)"]
+  },
+  {
+    "title": "Cardboard Print",
+    "filename": "monoprints/cardboard-print-fabric.jpg",
+    "tags": ["monoprint", "2024", "cardboard", "press"],
+    "caption": ["'PrPr-Crd-3' - monoprint and dye on fine cotton, 60 x 89cm (2024)"]
+  },
+  {
+    "title": "PrPr-Crd-1",
+    "filename": "monoprints/PrPr-Crd-1.jpg",
+    "tags": ["monoprint", "2024", "cardboard", "press"],
+    "caption": ["'PrPr-Crd-1' - monoprint on paper, 48 x 85cm (2024)"]
+  },
+  {
+    "title": "PrPr-Crd-2",
+    "filename": "monoprints/PrPr-Crd-2.jpg",
+    "tags": ["monoprint", "2024", "cardboard", "press"],
+    "caption": ["'PrPr-Crd-2' - monoprint on paper, 48 x 85cm (2024)"]
+  },
+  {
+    "title": "PrPr-Crd-Ntr-3",
+    "filename": "monoprints/PrPr-Crd-Ntr-3.jpg",
+    "tags": ["monoprint", "2024", "press"],
+    "caption": ["'PrPr-Crd-Ntr-3' - monoprint on paper, 43 x 69cm (2024)"]
+  },
+  {
+    "title": "Mn-1",
+    "filename": "monoprints/Mn-1.jpg",
+    "tags": ["monoprint", "2024"],
+    "caption": ["'Mn-1' - monoprint on paper, 42 x 59cm (2024)"]
+  },
+  {
+    "title": "Mn-2",
+    "filename": "monoprints/Mn-2.jpg",
+    "tags": ["monoprint", "2024"],
+    "caption": ["'Mn-2' - monoprint on paper, 42 x 59cm (2024)"]
+  },
+  {
+    "title": "Mn-3",
+    "filename": "monoprints/Mn-3.jpg",
+    "tags": ["monoprint", "2024"],
+    "caption": ["'Mn-3' - monoprint on paper, 42 x 59cm (2024)"] 
+  }
+]

@@ -93,27 +93,66 @@ const pageImage = image ?? defaultImage;
           skin: 'clean',
         });
   
-        document.querySelectorAll('.filter-button').forEach(button => {
-          button.addEventListener('click', () => {
-            document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+        document.addEventListener('DOMContentLoaded', () => {
+        const subFilters = document.querySelector('.sub-filters');
+
+        // Main Filters
+        document.querySelectorAll('.filters .filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+
+            // Toggle submenu visibility
+            if (subFilters) {
+                subFilters.classList.toggle('d-none', filter !== 'print');
+
+                if (filter === 'print') {
+                // Trigger Hybrids by default
+                const defaultSub = document.querySelector('.sub-filters .sub-filter-button[data-filter="hybrid"]');
+                if (defaultSub) {
+                    document.querySelectorAll('.sub-filters .sub-filter-button').forEach(btn => btn.classList.remove('active'));
+                    defaultSub.classList.add('active');
+
+                    document.querySelectorAll('.artwork').forEach(item => {
+                    item.style.display = item.classList.contains('hybrid') ? '' : 'none';
+                    });
+                }
+                }
+            }
+
+            // Main filter active class
+            document.querySelectorAll('.filters .filter-button').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-  
-            const filter = button.getAttribute('data-filter');
-            document.querySelectorAll('.artwork').forEach(item => {
-              if (filter === 'all' || item.classList.contains(filter)) {
-                item.style.display = '';
-              } else {
-                item.style.display = 'none';
-              }
+
+            // If not print, apply normal filtering
+            if (filter !== 'print') {
+                document.querySelectorAll('.artwork').forEach(item => {
+                item.style.display = (filter === 'all' || item.classList.contains(filter)) ? '' : 'none';
+                });
+            }
             });
-          });
         });
-  
-        // 👉 Trigger default filter
-        const defaultButton = document.querySelector('.filter-button.active');
+
+        // Submenu Filters
+        document.querySelectorAll('.sub-filters .sub-filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+
+            document.querySelectorAll('.sub-filters .sub-filter-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            document.querySelectorAll('.artwork').forEach(item => {
+                item.style.display = item.classList.contains(filter) ? '' : 'none';
+            });
+            });
+        });
+
+        // Trigger initial main filter
+        const defaultButton = document.querySelector('.filters .filter-button.active');
         if (defaultButton) {
-          defaultButton.click();
+            defaultButton.click();
         }
+        });
+
       </script>
 </body>
 
