@@ -65,20 +65,32 @@ const processedArtworks = await Promise.all(
 		</div>
 
 		<div class="row pt-5">
-			{processedArtworks.map(work => (
-			<div class={`artwork 
-				${work.tags.includes('photomash') ? 'col-lg-2 col-md-4 px-5' 
-					: work.tags.includes('echoes') ? 'col-lg-3 px-custom' 
-					: work.tags.includes('hybrid') ? 'col-lg-4 px-custom' 
-					: work.tags.includes('monoprint') ? 'col-lg-4 px-custom' 
-					: 'col-md-6'} 
-				mb-4 ${work.tags.join(' ')}`}>
+		{processedArtworks.map(work => {
+			let columnClass = '';
+
+			if (work.tags.includes('photomash')) {
+			columnClass = 'col-lg-2 col-md-4 px-5';
+			} else if (work.tags.includes('echoes')) {
+			columnClass = 'col-lg-3 px-custom';
+			} else if (work.tags.includes('hybrid')) {
+			columnClass = 'col-lg-4 px-custom';
+			} else if (work.tags.includes('monoprint')) {
+			columnClass = 'col-lg-4 px-custom';
+			} else if (work.tags.includes('painting')) { 
+			columnClass = 'col-md-6 px-custom';
+			} else {
+			columnClass = 'col-md-6';  // Fallback for unexpected cases
+			}
+
+			return (
+			<div class={`artwork ${columnClass} mb-4 ${work.tags.join(' ')}`}>
 				<a href={work.large} class="artgallery" data-type="image">
-					<img src={work.thumb} alt={work.title} class="img-fluid" />
+				<img src={work.thumb} alt={work.title} class="img-fluid" />
 				</a>
 				<p class="caption">{work.caption}</p>
 			</div>
-			))}
+			);
+		})}
 		</div>
 	</div>
 </BaseLayout>
